@@ -4,7 +4,7 @@
 <p>Title: <%= @project.title %></p>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
-<p>Pledge: $<%= @project.pledge %></p>
+<p>Pledge: </p>
 <p>End Date: <%= @project.end_date %></p>
 
 <!--  put the rewards here -->
@@ -14,8 +14,9 @@
   <% @rewards.each do |reward| %>
 
 <div class="rewards-show">
-  <p>Type: <%= reward.title %></p>
-  <p>Prize: <%= reward.description %></p>
-  <p>Contribution: $<%= reward.amount %></p>
+
+    <p>Type: <%= reward.title %></p>
+    <p>Prize: <%= reward.description %></p>
+    <p>Contribution: $<%= reward.amount %></p>
 </div>
   <% end %>

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  get 'pledges/new'
+
+  get 'pledges/show'
+
+  get 'pledges/create'
+
   root 'projects#index'
 
-  resources :projects
+  resources :projects 
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
