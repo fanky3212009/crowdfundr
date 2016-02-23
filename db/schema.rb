@@ -11,8 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 
 ActiveRecord::Schema.define(version: 20160223215134) do
+=======
+ActiveRecord::Schema.define(version: 20160223224544) do
+>>>>>>> add-ajax-project-show
 
   create_table "pledges", force: :cascade do |t|
     t.integer  "amount"
@@ -27,9 +31,8 @@ ActiveRecord::Schema.define(version: 20160223215134) do
     t.text     "description"
     t.integer  "goal"
     t.datetime "end_date"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "pledge",      default: 0
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "rewards", force: :cascade do |t|
