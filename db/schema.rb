@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-
-ActiveRecord::Schema.define(version: 20160223215134) do
-=======
 ActiveRecord::Schema.define(version: 20160223224544) do
->>>>>>> add-ajax-project-show
 
   create_table "pledges", force: :cascade do |t|
     t.integer  "amount"

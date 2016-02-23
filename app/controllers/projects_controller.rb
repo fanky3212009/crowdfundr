@@ -11,6 +11,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     @rewards = @project.rewards
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @resource }
+    end
+
+    # @pledge = @project.pledg
   end
 
   def create
