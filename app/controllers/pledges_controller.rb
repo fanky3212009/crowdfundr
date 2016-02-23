@@ -7,5 +7,6 @@ class PledgesController < ApplicationController
   end
 
   def create
+    
   end
 end

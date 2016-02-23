@@ -6,6 +6,6 @@ $(document).on('ready', function () {
     var reward = $(this);
     var contribution = parseInt(reward.find('span').html());
 
-    
+
   });
 });
