@@ -1,8 +1,20 @@
 <h1>Project#Show</h1>
 
-<% @project %>
 
 <p>Title: <%= @project.title %></p>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
 <p>End Date: <%= @project.end_date %></p>
+
+<!--  put the rewards here -->
+
+  <h2>Rewards for <%= @project.title %>:</h2>
+
+  <% @rewards.each do |reward| %>
+  
+<div class="rewards-show">
+  <p>Type: <%= reward.title %></p>
+  <p>Prize: <%= reward.description %></p>
+  <p>Contribution: $<%= reward.amount %></p>
+</div>
+  <% end %>
