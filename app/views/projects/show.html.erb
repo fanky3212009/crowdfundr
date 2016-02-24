@@ -10,14 +10,17 @@
 
 <% @rewards.each do |reward| %>
   <div class="rewards-show">
+  <!-- <a href="/projects/#{@project.id}"> -->
     <%= form_for Pledge.new, url: pledges_create_path, :html => {:class => 'rewards-form'} do |f| %>
-      <%= f.number_field :amount %>
-      <%= f.number_field :user_id%>
-      <%= f.number_field :project_id %>
+      <%= f.number_field :amount, :value => reward.amount%>
+      <%= f.number_field :user_id, :value => 1 %>
+      <%= f.number_field :project_id, :value => @project.id %>
       <%= f.submit %>
     <% end %>
     <p>Type: <%= reward.title %></p>
     <p>Prize: <%= reward.description %></p>
     <p>Contribution: $ <span class="reward-contribution"><%= reward.amount %></span></p>
+
+  <!-- </a> -->
   </div>
 <% end %>
