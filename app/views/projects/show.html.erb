@@ -5,7 +5,7 @@
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
 <p>Pledge: <span id="pledge-total">0</span> </p>
-<p>End Date: <%= @project.end_date %></p>
+<p>Days left: <%= @project.days_left() %></p>
 
 <!--  put the rewards here -->
 
