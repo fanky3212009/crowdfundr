@@ -1,8 +1,10 @@
 <h1><%= @project.title %></h1>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
-<p>Pledge: <span id="pledge-total"> <%= @pledge_total %></span> </p>
-<p>End Date: <%= @project.end_date %></p>
+
+<p>Pledge: <span id="pledge-total">0</span> </p>
+<p>Days left: <%= @project.days_left() %></p>
+<p> <%= @project.backed(current_user) ? "You have backed this project" : "Back this project!" %></p>
 
 <!--  put the rewards here -->
 

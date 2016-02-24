@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User Profile Page</h1>
+<p>
+  Projects You have backed:
+</p>
+
+
+<ul>
+
+  <%= current_user.pledges.find_each do |pledge| %>
+    <li>
+      <%= pledge.project.title %>
+    </li>
+  <% end %>
+</ul>
