@@ -11,6 +11,6 @@ $(document).on('ready', function () {
     $(reward.find('#pledge_project_id')).val(1);
     $(reward.find('#pledge_user_id')).val(1);
 
-    $(reward.find('.rewards-form')).submit();                     // submit form
+    // $(reward.find('.rewards-form')).submit();                     // submit form
   });
 });
