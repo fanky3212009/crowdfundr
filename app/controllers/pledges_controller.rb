@@ -1,5 +1,4 @@
 class PledgesController < ApplicationController
-
   def new
   end
 
@@ -7,10 +6,11 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = Pledge.new(params[pledge_params])
+    @project = Project.find(pledge_params[:project_id])
+    @pledge = @project.pledges.build(pledge_params)
 
     if @pledge.save
-      redirect_to :back, notice: "Pledge created"
+      redirect_to :back, notice: "#{pledge_params}"
     else
 
     end

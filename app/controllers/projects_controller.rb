@@ -12,7 +12,13 @@ class ProjectsController < ApplicationController
 
     @rewards = @project.rewards
 
-    @pledge_total = @project.pledges
+    # @pledge_total = @project.pledges.all[amount:].inject(0) {|prev, curr|
+    #   prev + curr
+    # }
+    @pledge_total = 0
+    @project.pledges.each { |pledge|
+      @pledge_total += pledge.amount
+    }
 
     respond_to do |format|
       format.html

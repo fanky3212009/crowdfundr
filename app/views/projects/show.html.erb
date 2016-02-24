@@ -12,6 +12,8 @@
   <div class="rewards-show">
     <%= form_for Pledge.new, url: pledges_create_path, :html => {:class => 'rewards-form'} do |f| %>
       <%= f.number_field :amount %>
+      <%= f.number_field :user_id%>
+      <%= f.number_field :project_id %>
       <%= f.submit %>
     <% end %>
     <p>Type: <%= reward.title %></p>

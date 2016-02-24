@@ -8,8 +8,9 @@ $(document).on('ready', function () {
 
     $(reward.find('#pledge_amount')).val(contribution);           // fill out the 'amount field' before submitting
     //TODO fill out user_id & project_id before submitting
+    $(reward.find('#pledge_project_id')).val(1);
+    $(reward.find('#pledge_user_id')).val(1);
+
     $(reward.find('.rewards-form')).submit();                     // submit form
-
-
   });
 });
