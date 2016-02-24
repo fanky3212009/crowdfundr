@@ -12,12 +12,12 @@ class ProjectsController < ApplicationController
 
     @rewards = @project.rewards
 
+    @pledge_total = @project.pledges
+
     respond_to do |format|
       format.html
       format.json { render json: @resource }
     end
-
-    # @pledge = @project.pledg
   end
 
   def create

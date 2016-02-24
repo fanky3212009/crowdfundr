@@ -4,7 +4,11 @@
 $(document).on('ready', function () {
   $('.rewards-show').click(function () {
     var reward = $(this);
-    var contribution = parseInt(reward.find('span').html());
+    var contribution = parseInt(reward.find('.reward-contribution').html());      // get reward amount
+
+    $(reward.find('#pledge_amount')).val(contribution);           // fill out the 'amount field' before submitting
+    //TODO fill out user_id & project_id before submitting
+    $(reward.find('.rewards-form')).submit();                     // submit form
 
 
   });

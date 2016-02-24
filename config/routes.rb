@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   get 'pledges/show'
 
-  get 'pledges/create'
+  post 'pledges/create'
 
   root 'projects#index'
 
-  resources :projects 
+  resources :projects
 
 
   resources :password_resets

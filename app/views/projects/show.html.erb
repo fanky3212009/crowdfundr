@@ -1,10 +1,7 @@
-<h1>Project#Show</h1>
-
-
-<p>Title: <%= @project.title %></p>
+<h1><%= @project.title %></h1>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
-<p>Pledge: <span id="pledge-total">0</span> </p>
+<p>Pledge: <span id="pledge-total"> <%= @pledge_total %></span> </p>
 <p>End Date: <%= @project.end_date %></p>
 
 <!--  put the rewards here -->
@@ -13,6 +10,10 @@
 
 <% @rewards.each do |reward| %>
   <div class="rewards-show">
+    <%= form_for Pledge.new, url: pledges_create_path, :html => {:class => 'rewards-form'} do |f| %>
+      <%= f.number_field :amount %>
+      <%= f.submit %>
+    <% end %>
     <p>Type: <%= reward.title %></p>
     <p>Prize: <%= reward.description %></p>
     <p>Contribution: $ <span class="reward-contribution"><%= reward.amount %></span></p>
