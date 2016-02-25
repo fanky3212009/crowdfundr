@@ -3,22 +3,25 @@
 
 <% funded_projects = 0 %>
 <% total_funded_amount = 0 %>
+<% user_hash = Hash.new 0 %>
 <% @projects.each do |project| %>
   <% if project.pledges != nil %>
     <% already_counted_in_funded = false %>
     <% project.pledges.each do |pledge| %>
+      <% user_hash[pledge.user_id] += 1 %>
       <% if pledge.amount > 0 %>
         <% total_funded_amount += pledge.amount %>
-          <% if already_counted_in_funded == false %>
-            <% funded_projects += 1 %>
-            <% already_counted_in_funded = true %>
-          <% end %>
+        <% if already_counted_in_funded == false %>
+          <% funded_projects += 1 %>
+          <% already_counted_in_funded = true %>
+        <% end %>
       <% end %>
     <% end  %>
   <% end %>
 <% end %>
 <p>Successfully funded projects: <span><%= funded_projects %> </span> </p>
-<p>Total Money Pledged For All Products: <span><%= total_funded_amount %></span></p>
+<p>Total Money Pledged for All Products: <span><%= total_funded_amount %></span></p>
+<p>Total Backers for All Projects: <span> <%= user_hash.length %></span> </p>
 
 <% if @projects.any? %>
   <ul>
