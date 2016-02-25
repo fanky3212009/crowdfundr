@@ -2,7 +2,7 @@
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
 
-<p>Pledge: <span id="pledge-total">0</span> </p>
+<p>Pledge: <span id="pledge-total"><%= @pledge_total %></span> </p>
 <p>Days left: <%= @project.days_left() %></p>
 <p> <%= @project.backed(current_user) ? "You have backed this project" : "Back this project!" %></p>
 
@@ -13,16 +13,18 @@
 <% @rewards.each do |reward| %>
   <div class="rewards-show">
   <!-- <a href="/projects/#{@project.id}"> -->
+  <% if current_user %>
     <%= form_for Pledge.new, url: pledges_create_path, :html => {:class => 'rewards-form'} do |f| %>
       <%= f.number_field :amount, :value => reward.amount%>
-      <%= f.number_field :user_id, :value => 1 %>
+      <%= f.number_field :user_id, :value => current_user %>
       <%= f.number_field :project_id, :value => @project.id %>
       <%= f.submit %>
     <% end %>
+
+  <% end %>
     <p>Type: <%= reward.title %></p>
     <p>Prize: <%= reward.description %></p>
     <p>Contribution: $ <span class="reward-contribution"><%= reward.amount %></span></p>
-
   <!-- </a> -->
   </div>
 <% end %>

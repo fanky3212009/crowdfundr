@@ -5,10 +5,12 @@
 
 
 <ul>
+  <% list_of_pledges_for_user = Hash.new 0 %>
+  <% current_user.pledges.find_each do |pledge| %>
+    <% list_of_pledges_for_user[pledge.project.title] += 1 %>
+  <% end %>
 
-  <%= current_user.pledges.find_each do |pledge| %>
-    <li>
-      <%= pledge.project.title %>
-    </li>
+  <% list_of_pledges_for_user.each do |name, amount| %>
+    <%= name %>
   <% end %>
 </ul>

@@ -2,10 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready', function () {
-
-
-
-
     $('.rewards-form').submit(function (e) {
       e.preventDefault();
 
@@ -22,16 +18,12 @@ $(document).on('ready', function () {
         error: function () {
           console.log("Errors!");
         }
-
       });
-
     });
 
     $('.rewards-show').click(function () {
         var self = $(this);
         $(self.find('.rewards-form')).trigger('submit');
-
-
     });
 }) // });
 

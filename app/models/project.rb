@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
   end
 
   def backed(current_user)
-    self.pledges.where("user_id = ?", current_user.id) != []
+    if current_user
+      self.pledges.where("user_id = ?", current_user.id) != []
+    end
   end
 end
