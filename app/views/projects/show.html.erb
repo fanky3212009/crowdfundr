@@ -6,7 +6,15 @@
 <p>Days left: <%= @project.days_left() %></p>
 <p> <%= @project.backed(current_user) ? "You have backed this project" : "Back this project!" %></p>
 
-<!--  put the rewards here -->
+<% pledge_hash = Hash.new 0 %>
+<% @project.pledges.each do |pledge| %>
+  <% pledge_hash[pledge.amount] += 1 %>
+<% end %>
+
+<p>Amount of Each Type of Pledge: </p>
+<% pledge_hash.each do |key, value| %>
+  <p>  <%= pledge_hash[key] %> : <%= pledge_hash[value]  %> </p>
+<% end %>
 
 <h2>Rewards for <%= @project.title %>:</h2>
 <% @rewards.each do |reward| %>
