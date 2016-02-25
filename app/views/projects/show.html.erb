@@ -8,7 +8,7 @@
 
 <% pledge_hash = Hash.new 0 %>
 <% @project.pledges.each do |pledge| %>
-  <% pledge_hash[pledge.amount] += 1 %>
+  <% pledge_hash["#{pledge.amount}+h"] += 1 %>
 <% end %>
 
 <p>Amount of Each Type of Pledge: </p>
@@ -33,4 +33,8 @@
     <p>Contribution: $ <span class="reward-contribution"><%= reward.amount %></span></p>
   <!-- </a> -->
   </div>
+<% end %>
+
+<% if current_user && @project.delete? %>
+  <%= link_to "Delete Project", project_path(@project.id), method: :delete %>
 <% end %>
