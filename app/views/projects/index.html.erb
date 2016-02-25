@@ -2,17 +2,23 @@
 <%= link_to 'New Project', new_project_path %>
 
 <% funded_projects = 0 %>
+<% total_funded_amount = 0 %>
 <% @projects.each do |project| %>
   <% if project.pledges != nil %>
+    <% already_counted_in_funded = false %>
     <% project.pledges.each do |pledge| %>
       <% if pledge.amount > 0 %>
-        <% funded_projects += 1 %>
-        <% break %>
+        <% total_funded_amount += pledge.amount %>
+          <% if already_counted_in_funded == false %>
+            <% funded_projects += 1 %>
+            <% already_counted_in_funded = true %>
+          <% end %>
       <% end %>
     <% end  %>
   <% end %>
 <% end %>
 <p>Successfully funded projects: <span><%= funded_projects %> </span> </p>
+<p>Total Money Pledged For All Products: <span><%= total_funded_amount %></span></p>
 
 <% if @projects.any? %>
   <ul>
