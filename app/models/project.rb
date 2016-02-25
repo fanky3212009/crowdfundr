@@ -12,6 +12,15 @@ class Project < ActiveRecord::Base
   end
 
   def backed(current_user)
-    self.pledges.where("user_id = ?", current_user.id) != []
+    if current_user
+      self.pledges.where("user_id = ?", current_user.id) != []
+    end
+  end
+
+  def delete?
+    self.pledges.each { |pledge|
+      return false if pledge.amount > 0
+    }
+    return true
   end
 end

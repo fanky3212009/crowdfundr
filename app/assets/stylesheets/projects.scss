@@ -2,8 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.rewards-show:hover {
+  background-color: rgb(0, 118, 143);
+}
+
+.rewards-show:active {
+  background-color: rgb(103, 194, 166);
+  padding: 15px;
+}
+
 .rewards-show {
-  background-color: #e0e0e0;
+  border-radius: 25%;
+  background-color: rgb(17, 54, 138);
+  display: inline-block;
+  border: 1px dashed rgb(10, 6, 41);
+  color: white;
+  padding: 10px;
 }
 
 .rewards-form {

@@ -1,11 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).on('ready', function () {
-
-
-
-
+$(document).on('ready page:load', function () {
     $('.rewards-form').submit(function (e) {
       e.preventDefault();
 
@@ -22,14 +18,14 @@ $(document).on('ready', function () {
         error: function () {
           console.log("Errors!");
         }
-
       });
-
     });
 
     $('.rewards-show').click(function () {
         var self = $(this);
+
         self.find('.rewards-form').trigger('submit');
+
 
 
     });

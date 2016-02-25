@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   has_many :pledges
   belongs_to :user
 
+
 end
