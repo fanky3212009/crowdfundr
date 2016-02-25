@@ -29,7 +29,7 @@ $(document).on('ready', function () {
 
     $('.rewards-show').click(function () {
         var self = $(this);
-        $(self.find('.rewards-form')).trigger('submit');
+        self.find('.rewards-form').trigger('submit');
 
 
     });

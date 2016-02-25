@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
+  # resources :pledges
   resources :projects
 
 
