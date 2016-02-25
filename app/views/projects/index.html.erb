@@ -1,6 +1,18 @@
 <h1>Projects</h1>
-
 <%= link_to 'New Project', new_project_path %>
+
+<% funded_projects = 0 %>
+<% @projects.each do |project| %>
+  <% if project.pledges != nil %>
+    <% project.pledges.each do |pledge| %>
+      <% if pledge.amount > 0 %>
+        <% funded_projects += 1 %>
+        <% break %>
+      <% end %>
+    <% end  %>
+  <% end %>
+<% end %>
+<p>Successfully funded projects: <span><%= funded_projects %> </span> </p>
 
 <% if @projects.any? %>
   <ul>
