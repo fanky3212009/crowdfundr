@@ -23,11 +23,14 @@ $(document).on('ready page:load', function () {
 
     $('.rewards-show').click(function () {
         var self = $(this);
-
         self.find('.rewards-form').trigger('submit');
+    });
 
+    $('#search-form').submit(function(event) {
+      event.preventDefault();
+      var searchValue = $('#search').val();
 
-
+      $.getScript('/projects?search=' + searchValue);
     });
 }) // });
 

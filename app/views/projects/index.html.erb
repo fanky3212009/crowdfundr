@@ -1,6 +1,11 @@
 <h1>Projects</h1>
 <%= link_to 'New Project', new_project_path %>
 
+<%= form_tag projects_path, method: :get, authentication: false, id: 'search-form' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <% funded_projects = 0 %>
 <% total_funded_amount = 0 %>
 <% user_hash = Hash.new 0 %>
@@ -25,11 +30,7 @@
 
 <% if @projects.any? %>
   <ul>
-    <% @projects.each do |project| %>
-      <li class="project">
-        <%= link_to project.title, project_path(project) %>
-      </li>
-    <% end %>
+    <%= render @projects %>
   </ul>
 <% else %>
   <h2>No projects yet</h2>
