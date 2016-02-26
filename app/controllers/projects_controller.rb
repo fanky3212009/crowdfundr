@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 
+
   def index
     @projects = if params[:search]
       Project.where("title LIKE ?", "%#{params[:search]}%")
@@ -59,7 +60,7 @@ class ProjectsController < ApplicationController
   private
   def project_params
     params.require(:project)
-          .permit(:title, :description, :goal, :end_date,
+          .permit(:title, :description, :goal, :end_date, :category_id, 
                   rewards_attributes: [:title, :description, :amount, :_destroy])
   end
 end
