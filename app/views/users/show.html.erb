@@ -7,12 +7,15 @@
   <% list_of_pledges_for_user = Hash.new 0 %>
   <% current_user.pledges.find_each do |pledge| %>
     <% if pledge.project != nil %>
-      <% list_of_pledges_for_user[pledge.project.title] = pledge.project.reached_goal? %>
+      <% list_of_pledges_for_user[pledge.project.title] = {status: pledge.project.reached_goal?, owner: "Have to add in a user_id when creating a project to get this functionality?"} %>
     <% end %>
   <% end %>
 
-  <% list_of_pledges_for_user.each do |name, status| %>
-    <li><%= name %> : <%= status ? "The project has reached its goal" : "The project has not reached its goal" %></li>
+  <% list_of_pledges_for_user.each do |name, attribute| %>
+    <li>
+      <%= name %> : <%= attribute[:status] ? "The project has reached its goal" : "The project has not reached its goal" %>
+      : Creator of Project - <%= attribute[:owner] %>
+    </li>
   <% end %>
 </ul>
 
