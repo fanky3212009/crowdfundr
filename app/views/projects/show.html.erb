@@ -1,6 +1,8 @@
 <h1><%= @project.title %></h1>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
+<p>Owner: <%= @project.owner.email %></p>
+
 
 <p>Pledge: <span id="pledge-total"><%= @pledge_total %></span> </p>
 <p>Category: <%= @project.category_id %></p>
