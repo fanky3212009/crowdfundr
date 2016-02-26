@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   def index
     @projects = if params[:search]
       Project.where("title LIKE ?", "%#{params[:search]}%")
@@ -6,11 +7,13 @@ class ProjectsController < ApplicationController
       Project.all
     end
 
+    @categories = Category.all
+
     respond_to do |format|
       format.html
       format.json { render json: @projects }
+      format.js
     end
-
   end
 
   def new
