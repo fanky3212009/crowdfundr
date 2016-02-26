@@ -34,10 +34,6 @@ class ProjectsController < ApplicationController
       @pledge_total += pledge.amount
     }
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @resource }
-    end
   end
 
   def create

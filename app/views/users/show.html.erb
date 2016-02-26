@@ -7,7 +7,7 @@
   <% list_of_pledges_for_user = Hash.new 0 %>
   <% current_user.pledges.find_each do |pledge| %>
     <% if pledge.project != nil %>
-      <% list_of_pledges_for_user[pledge.project.title] = {status: pledge.project.reached_goal?, owner: "Have to add in a user_id when creating a project to get this functionality?"} %>
+      <% list_of_pledges_for_user[pledge.project.title] = {status: pledge.project.reached_goal?, owner: pledge.project.owner.email} %>
     <% end %>
   <% end %>
 
