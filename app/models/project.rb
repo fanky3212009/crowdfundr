@@ -23,4 +23,17 @@ class Project < ActiveRecord::Base
     }
     return true
   end
+
+  def project_total
+    total = 0
+    self.pledges.each {|pledge|
+      total += pledge.amount
+    }
+    total
+  end
+
+  def reached_goal?
+    self.project_total >= self.goal
+  end
+
 end
