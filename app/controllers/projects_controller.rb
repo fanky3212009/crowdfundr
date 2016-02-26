@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   def index
     @projects = if params[:search]
-      Project.where("name LIKE ?", "%#{params[:search]}%")
+      Project.where("title LIKE ?", "%#{params[:search]}%")
     else
       Project.all
     end

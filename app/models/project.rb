@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   has_many :rewards
   has_many :pledges
   belongs_to :user
+  belongs_to :category
 
   accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
 
@@ -9,6 +10,10 @@ class Project < ActiveRecord::Base
     #code
     time_left = self.end_date - Time.now
     (time_left / 1.day).ceil
+  end
+
+  def expired?
+    (self.end_date - Time.now) <= 0
   end
 
   def backed(current_user)
