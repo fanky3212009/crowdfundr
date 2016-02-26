@@ -41,12 +41,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
 
-    if @project.save
-      redirect_to projects_path, notice: "Project successfully created!"
-    else
-      render :new
+    if current_user
+      @user = User.find(session[:user_id])
+      @project = @user.owend_projects.build(project_params)
+
+      if @project.save
+        redirect_to projects_path, notice: "Project successfully created!"
+      else
+        render :new
+      end
     end
   end
 
