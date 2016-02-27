@@ -1,5 +1,5 @@
 class Reward < ActiveRecord::Base
   belongs_to :project
-  has_many :pledges
-
+  belongs_to :pledge
+  has_many :tags, as: :taggable
 end
