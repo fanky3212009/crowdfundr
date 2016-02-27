@@ -22,6 +22,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+
+  
     # @pledge = @project.pledges.build
 
     @rewards = @project.rewards

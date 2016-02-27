@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'tags/create'
+  #
+  # get 'tags/destroy'
+
   get 'pledges/new'
 
   get 'pledges/show'
@@ -8,9 +12,10 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   # resources :pledges
-  resources :projects
+  resources :projects 
 
 
+  resources :tags, only: [:create, :destroy, :new]
   resources :password_resets
 
   resources :user_sessions

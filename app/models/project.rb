@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :users, through: :pledges
   belongs_to :owner, class_name: "User"
   belongs_to :category
+  has_many :tags, as: :taggable
 
   accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
 

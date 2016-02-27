@@ -2,6 +2,9 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready page:load', function () {
+
+    
+
     $('.rewards-form').submit(function (e) {
       e.preventDefault();
 
