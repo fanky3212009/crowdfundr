@@ -26,5 +26,14 @@
 
 <%= yield %>
 
+
+<% if @categories.any? %>
+    <% @categories.each do |category| %>
+      <div class="category-list">
+        <%= link_to "#{category.name}", category_path(category.id) %>
+      </div>
+    <% end %>
+<% end %>
+
 </body>
 </html>

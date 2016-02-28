@@ -8,8 +8,6 @@ class ProjectsController < ApplicationController
       Project.all
     end
 
-    @categories = Category.all
-
     respond_to do |format|
       format.html
       format.json { render json: @projects }
