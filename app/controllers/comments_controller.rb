@@ -9,8 +9,11 @@ def create
   @comment = @project.comments.build(comment_params)
   @comment.user = current_user
 
-  if @comment.save
-    redirect_to @project
+  respond_to do |format|
+    if @comment.save
+      # format.html {redirect_to @project}
+      format.js
+    end
   end
 end
 

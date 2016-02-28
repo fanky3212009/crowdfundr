@@ -1,0 +1,5 @@
+<% @project.comments.each do |comment| %>
+  <% if comment != nil %>
+    <div><%= comment.message%></div>
+  <% end %>
+<% end %>

@@ -89,16 +89,14 @@
 
 <% if @project.comments.any? %>
   <h3>List of Comments</h3>
-  <% @project.comments.each do |comment| %>
-    <% if comment != nil %>
-      <div><%= comment.message%></div>
-    <% end %>
-  <% end %>
+  <div class="comment-list">
+    <%= render :partial => 'comments' %>
+  </div>
 <% end %>
 
 <% if current_user %>
   <h4>Add New Comment</h4>
-  <%= form_for ([@project, @comment]), :remote => true do |f| %>
+  <%= form_for [@project, @comment], :remote => true do |f| %>
     <div class="form-field">
       <%= f.text_field :message %>
     </div>
