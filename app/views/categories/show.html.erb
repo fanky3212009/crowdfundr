@@ -1,4 +1,9 @@
 <h1><%= @category.name %></h1>
-<% @category.projects.each do |project| %>
-  <div><%= link_to "#{project.title}", project_path(project.id) %></div>
+
+<% if @projects %>
+  <h1><small><%= page_entries_info @projects %></small></h1>
+
+  <%= render @projects %>
+
+  <%= paginate @projects %>
 <% end %>
