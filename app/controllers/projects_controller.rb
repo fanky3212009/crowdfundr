@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :load_project, only: [:show, :destroy]
 
   def index
     @projects = if params[:search]
@@ -21,10 +22,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
-
-
     # @pledge = @project.pledges.build
+
+    if current_user
+      @comment = @project.comments.build
+    end
 
     @rewards = @project.rewards
 
@@ -53,7 +55,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
@@ -61,7 +62,11 @@ class ProjectsController < ApplicationController
   private
   def project_params
     params.require(:project)
-          .permit(:title, :description, :goal, :end_date, :category_id, 
+          .permit(:title, :description, :goal, :end_date, :category_id,
                   rewards_attributes: [:title, :description, :amount, :_destroy])
+  end
+
+  def load_project
+    @project = Project.find(params[:id])
   end
 end

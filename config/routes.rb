@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   # resources :pledges
-  resources :projects 
-
+  resources :projects do
+    resources :comments, only: [:show, :create, :destroy]
+  end
 
   resources :tags, only: [:create, :destroy, :new]
   resources :password_resets

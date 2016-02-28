@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :rewards
+  has_many :comments
+  has_many :users, through: :comments
   has_many :pledges
   has_many :users, through: :pledges
   belongs_to :owner, class_name: "User"

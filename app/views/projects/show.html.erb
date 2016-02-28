@@ -86,3 +86,24 @@
 <% if (@project.owner_id == current_user.id) && @project.delete? %>
   <div><%= link_to "Delete Project", @project, method: :delete %></div>
 <% end %>
+
+<% if @project.comments.any? %>
+  <h3>List of Comments</h3>
+  <% @project.comments.each do |comment| %>
+    <% if comment != nil %>
+      <div><%= comment.message%></div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_user %>
+  <h4>Add New Comment</h4>
+  <%= form_for ([@project, @comment]), :remote => true do |f| %>
+    <div class="form-field">
+      <%= f.text_field :message %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% end %>
