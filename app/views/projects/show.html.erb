@@ -1,25 +1,29 @@
 <h1><%= @project.title %></h1>
 <p>Description: <%= @project.description %></p>
 <p>Goal: $<%= @project.goal %></p>
+
 <p>Owner: <%= @project.owner.email %></p>
 
 
 <p>Pledge: <span id="pledge-total"><%= @pledge_total %></span> </p>
-<p>Category: <%= @project.category_id %></p>
+<p>Category: <%= @project.category.name %></p>
 <p>Days left: <%= @project.days_left() >= 0 ? @project.days_left() : "Expired" %></p>
-<p> <%= (@project.backed(current_user) == true && @project.expired? == false) ? "You have backed this project" : "Back this project!" %></p>
+<p> <%= @project.backed(current_user) == true ? "You have backed this project" :  @project.expired? == false ? "Back this project!" : "" %></p>
 
 <% if current_user && @project.owner_id == current_user.id %>
   <p>How many people have funded this project at each reward:</p>
   <% reward_hash = Hash.new 0 %>
-  <% @project.rewards.each do |reward| %>
-    <%= "#{reward.title}: #{reward.pledges.count()}" %>
+  <% @project.pledges.each do |pledge| %>
+    <% reward_hash[pledge.reward.title] += 1 %>
+  <% end %>
+  <% reward_hash.each do |k, v| %>
+    <%= "#{k} : #{reward_hash[k]}" %>
   <% end %>
 <% end %>
 
 
 <% if !current_user %>
-  <p>*Plese login to Back this project!</p>
+  <p>*Please login to Back this project!</p>
 <% end %>
 
 <% if @rewards.any? %>
@@ -73,6 +77,6 @@
   <% end %>
 
 
-<% if current_user && @project.delete? %>
+<% if (@project.owner_id == current_user.id) && @project.delete? %>
   <div><%= link_to "Delete Project", project_path(@project.id), method: :delete %></div>
 <% end %>
