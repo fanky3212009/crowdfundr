@@ -19,6 +19,7 @@
   border: 1px dashed rgb(10, 6, 41);
   color: white;
   padding: 10px;
+  font-weight: bolder;
 }
 
 .rewards-form {
@@ -29,4 +30,16 @@
   border: 1px dashed rgb(71, 133, 4);
   display: inline-block;
   padding: 5px;
+}
+
+.tag-list {
+  border: 1px solid rgb(70, 0, 17);
+  background-color: rgb(68, 3, 27);
+  color: rgb(252, 252, 252);
+  display: inline-block;
+  padding: 5px;
+}
+
+.tag-list > a:active {
+  color: rgb(250, 250, 250);
 }
