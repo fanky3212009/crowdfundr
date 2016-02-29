@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :create, :destroy]
   end
 
-  resources :tags, only: [:create, :destroy, :new]
+  resources :tags, only: [:create, :destroy, :new, :show]
   resources :password_resets
 
   resources :user_sessions

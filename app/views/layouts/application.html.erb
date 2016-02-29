@@ -35,5 +35,13 @@
     <% end %>
 <% end %>
 
+<% if @tags.any? %>
+    <% @tags.each do |tag| %>
+      <div class="tag-list">
+        <%= link_to "#{tag.name}", tag_path(tag.id) %>
+      </div>
+    <% end %>
+<% end %>
+
 </body>
 </html>

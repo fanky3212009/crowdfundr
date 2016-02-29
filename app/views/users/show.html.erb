@@ -1,21 +1,25 @@
 <h1><%= @user.email %> Profile Page</h1>
+
 <p>
-  Projects You have backed:
+  Backed Projects:
 </p>
 
 <ul>
   <% list_of_pledges_for_user = Hash.new 0 %>
-  <% current_user.pledges.find_each do |pledge| %>
+  <% @user.pledges.find_each do |pledge| %>
     <% if pledge.project != nil %>
       <% list_of_pledges_for_user[pledge.project.title] = {status: pledge.project.reached_goal?, owner: pledge.project.owner.email} %>
     <% end %>
   <% end %>
 
-  <% list_of_pledges_for_user.each do |name, attribute| %>
-    <li>
-      <%= name %> : <%= attribute[:status] ? "The project has reached its goal" : "The project has not reached its goal" %>
-      : Creator of Project - <%= attribute[:owner] %>
-    </li>
+    <% list_of_pledges_for_user.each do |name, attribute| %>
+      <li>
+        <%= name %>
+          <% if @user == current_user %>
+            : <%= attribute[:status] ? "The project has reached its goal" : "The project has not reached its goal" %>
+            : Creator of Project - <%= attribute[:owner] %>
+          <% end %>
+      </li>
   <% end %>
 </ul>
 
