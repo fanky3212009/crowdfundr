@@ -1,3 +1,8 @@
-<% @tag.projects.each do |project| %>
-  
+<% @tag_projects = Tag.projects(@tag.name) %>
+<% if @tag_projects.any? %>
+  <div class="tag-projects">
+    <% @tag_projects.each do |project| %>
+      <%= project.title %>
+    <% end %>
+  </div>
 <% end %>

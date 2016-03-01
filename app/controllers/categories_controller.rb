@@ -2,10 +2,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
 
     if @category.projects.any?
       @projects = @category.projects
